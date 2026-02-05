@@ -1,0 +1,996 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NRAA-XCIETY | Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&amp;family=Rajdhani:wght@300;400;500;600;700&amp;family=Share+Tech+Mono&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --bg-primary: #0a0a0f;
+      --surface-color: #12121a;
+      --text-color: #e0e0e0;
+      --accent-primary: #00ff88;
+      --accent-secondary: #0088ff;
+    }
+    
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent-primary) var(--bg-primary);
+    }
+    
+    *::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    *::-webkit-scrollbar-track {
+      background: var(--bg-primary);
+    }
+    
+    *::-webkit-scrollbar-thumb {
+      background: var(--accent-primary);
+      border-radius: 3px;
+    }
+    
+    .font-cyber {
+      font-family: 'Orbitron', sans-serif;
+    }
+    
+    .font-tech {
+      font-family: 'Rajdhani', sans-serif;
+    }
+    
+    .font-mono {
+      font-family: 'Share Tech Mono', monospace;
+    }
+    
+    .glitch-text {
+      position: relative;
+      animation: glitch 2s infinite;
+    }
+    
+    .glitch-text::before,
+    .glitch-text::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .glitch-text::before {
+      animation: glitch-1 0.3s infinite;
+      color: #00ff88;
+      z-index: -1;
+    }
+    
+    .glitch-text::after {
+      animation: glitch-2 0.3s infinite;
+      color: #0088ff;
+      z-index: -2;
+    }
+    
+    @keyframes glitch {
+      0%, 90%, 100% { transform: translate(0); }
+      92% { transform: translate(-2px, 2px); }
+      94% { transform: translate(2px, -2px); }
+      96% { transform: translate(-2px, -2px); }
+      98% { transform: translate(2px, 2px); }
+    }
+    
+    @keyframes glitch-1 {
+      0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+      20% { clip-path: inset(20% 0 60% 0); transform: translate(-3px, 3px); }
+      40% { clip-path: inset(40% 0 40% 0); transform: translate(3px, -3px); }
+      60% { clip-path: inset(60% 0 20% 0); transform: translate(-3px, -3px); }
+      80% { clip-path: inset(80% 0 0% 0); transform: translate(3px, 3px); }
+    }
+    
+    @keyframes glitch-2 {
+      0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+      20% { clip-path: inset(80% 0 0% 0); transform: translate(3px, -3px); }
+      40% { clip-path: inset(60% 0 20% 0); transform: translate(-3px, 3px); }
+      60% { clip-path: inset(40% 0 40% 0); transform: translate(3px, 3px); }
+      80% { clip-path: inset(20% 0 60% 0); transform: translate(-3px, -3px); }
+    }
+    
+    .cyber-border {
+      position: relative;
+      background: linear-gradient(135deg, rgba(0,255,136,0.1) 0%, rgba(0,136,255,0.1) 100%);
+      border: 1px solid transparent;
+      background-clip: padding-box;
+    }
+    
+    .cyber-border::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, #00ff88, #0088ff);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+    
+    .scan-line {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .scan-line::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #00ff88, transparent);
+      animation: scan 3s linear infinite;
+    }
+    
+    @keyframes scan {
+      0% { top: 0; opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { top: 100%; opacity: 1; }
+    }
+    
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .pulse-glow {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(0,255,136,0.3); }
+      50% { box-shadow: 0 0 40px rgba(0,255,136,0.6), 0 0 60px rgba(0,136,255,0.3); }
+    }
+    
+    .typing-cursor::after {
+      content: '|';
+      animation: blink 1s step-end infinite;
+    }
+    
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+    
+    .progress-bar {
+      position: relative;
+      height: 8px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    
+    .progress-bar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: linear-gradient(90deg, #00ff88, #0088ff);
+      border-radius: 4px;
+      width: var(--progress, 0%);
+      transition: width 1s ease-out;
+    }
+    
+    .progress-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      animation: shimmer 2s infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,255,136,0.2);
+    }
+    
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #00ff88, #0088ff);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+    
+    .matrix-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      background: radial-gradient(at 20% 50%, rgba(0,255,136,0.15) 0%, transparent 50%),
+                  radial-gradient(at 80% 80%, rgba(0,136,255,0.15) 0%, transparent 50%),
+                  radial-gradient(at 40% 0%, rgba(255,0,128,0.08) 0%, transparent 50%),
+                  linear-gradient(135deg, #0a0a0f 0%, #1a0a2e 50%, #0a0a0f 100%);
+      animation: bgShift 15s ease-in-out infinite;
+    }
+    
+    @keyframes bgShift {
+      0%, 100% {
+        filter: hue-rotate(0deg);
+      }
+      50% {
+        filter: hue-rotate(10deg);
+      }
+    }
+    
+    .floating-orbs {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.6;
+      filter: blur(40px);
+    }
+    
+    .orb-1 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(0,255,136,0.4) 0%, transparent 70%);
+      top: -200px;
+      left: -200px;
+      animation: float 20s infinite ease-in-out;
+    }
+    
+    .orb-2 {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(0,136,255,0.3) 0%, transparent 70%);
+      bottom: -150px;
+      right: -150px;
+      animation: float-reverse 25s infinite ease-in-out;
+    }
+    
+    .orb-3 {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(100,50,255,0.2) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: float 30s infinite ease-in-out;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(50px, -50px); }
+      50% { transform: translate(100px, 0); }
+      75% { transform: translate(50px, 50px); }
+    }
+    
+    @keyframes float-reverse {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(-50px, 50px); }
+      50% { transform: translate(-100px, 0); }
+      75% { transform: translate(-50px, -50px); }
+    }
+    
+    .grid-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      background-image: 
+        linear-gradient(0deg, transparent 24%, rgba(0,255,136,0.05) 25%, rgba(0,255,136,0.05) 26%, transparent 27%, transparent 74%, rgba(0,255,136,0.05) 75%, rgba(0,255,136,0.05) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, rgba(0,255,136,0.05) 25%, rgba(0,255,136,0.05) 26%, transparent 27%, transparent 74%, rgba(0,255,136,0.05) 75%, rgba(0,255,136,0.05) 76%, transparent 77%, transparent);
+      background-size: 50px 50px;
+      animation: gridMove 20s linear infinite;
+    }
+    
+    @keyframes gridMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+    
+    .section-title {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::before {
+      content: '< ';
+      color: #00ff88;
+    }
+    
+    .section-title::after {
+      content: ' />';
+      color: #0088ff;
+    }
+    
+    .hex-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' fill='none' stroke='%2300ff88' stroke-opacity='0.05'/%3E%3C/svg%3E");
+    }
+    
+    .timeline-item {
+      position: relative;
+      padding-left: 30px;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00ff88, #0088ff);
+      box-shadow: 0 0 10px rgba(0,255,136,0.5);
+    }
+    
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 24px;
+      width: 2px;
+      height: calc(100% - 16px);
+      background: linear-gradient(180deg, #00ff88, transparent);
+    }
+    
+    .timeline-item:last-child::after {
+      display: none;
+    }
+    
+    .skill-icon {
+      transition: all 0.3s ease;
+    }
+    
+    .skill-icon:hover {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 10px rgba(0,255,136,0.5));
+    }
+    
+    .contact-card {
+      transition: all 0.3s ease;
+    }
+    
+    .contact-card:hover {
+      background: rgba(0,255,136,0.1);
+      border-color: #00ff88;
+    }
+    
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .mobile-menu.active {
+      transform: translateX(0);
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-[#0a0a0f] text-[#e0e0e0] font-tech overflow-auto"><!-- Animated Background Layers -->
+  <div class="animated-bg"></div>
+  <div class="grid-overlay"></div>
+  <div class="floating-orbs">
+   <div class="orb orb-1"></div>
+   <div class="orb orb-2"></div>
+   <div class="orb orb-3"></div>
+  </div><!-- Matrix Background Effect -->
+  <canvas id="matrixCanvas" class="matrix-bg"></canvas><!-- Main Container -->
+  <div id="mainContainer" class="relative z-10 w-full min-h-full hex-pattern"><!-- Header / Navigation -->
+   <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]/90 backdrop-blur-md border-b border-[#00ff88]/20">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="flex items-center justify-between h-16 sm:h-20"><!-- Logo -->
+      <div class="flex items-center space-x-2">
+       <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-[#00ff88] to-[#0088ff] flex items-center justify-center pulse-glow"><span class="font-cyber font-bold text-[#0a0a0f] text-lg">N</span>
+       </div>
+       <div>
+        <h1 id="brandName" class="font-cyber font-bold text-lg sm:text-xl text-[#00ff88]">NRAA-XCIETY</h1>
+        <p id="tagline" class="text-xs text-[#0088ff] font-mono hidden sm:block">Cyber Security Enthusiast</p>
+       </div>
+      </div><!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8"><a href="#home" class="nav-link font-tech font-medium text-[#e0e0e0] hover:text-[#00ff88] active">Home</a> <a href="#about" class="nav-link font-tech font-medium text-[#e0e0e0] hover:text-[#00ff88]">About</a> <a href="#skills" class="nav-link font-tech font-medium text-[#e0e0e0] hover:text-[#00ff88]">Skills</a> <a href="#portfolio" class="nav-link font-tech font-medium text-[#e0e0e0] hover:text-[#00ff88]">Portfolio</a> <a href="#contact" class="nav-link font-tech font-medium text-[#e0e0e0] hover:text-[#00ff88]">Contact</a>
+      </div><!-- Mobile Menu Button --> <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg border border-[#00ff88]/30 hover:bg-[#00ff88]/10 transition-colors">
+       <svg class="w-6 h-6 text-[#00ff88]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+       </svg></button>
+     </div>
+    </nav><!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed top-16 right-0 w-64 h-[calc(100%-4rem)] bg-[#12121a] border-l border-[#00ff88]/20 md:hidden">
+     <div class="flex flex-col p-6 space-y-4"><a href="#home" class="nav-link font-tech font-medium text-[#e0e0e0] hover:text-[#00ff88] py-2">🏠 Home</a> <a href="#about" class="nav-link font-tech font-medium text-[#e0e0e0] hover:text-[#00ff88] py-2">👤 About</a> <a href="#skills" class="nav-link font-tech font-medium text-[#e0e0e0] hover:text-[#00ff88] py-2">⚡ Skills</a> <a href="#portfolio" class="nav-link font-tech font-medium text-[#e0e0e0] hover:text-[#00ff88] py-2">💼 Portfolio</a> <a href="#contact" class="nav-link font-tech font-medium text-[#e0e0e0] hover:text-[#00ff88] py-2">📧 Contact</a>
+     </div>
+    </div>
+   </header><!-- Hero Section / Home -->
+   <section id="home" class="min-h-[100%] flex items-center justify-center pt-20 pb-10 px-4">
+    <div class="max-w-4xl mx-auto text-center"><!-- Profile Photo -->
+     <div class="relative inline-block mb-8 floating">
+      <div class="w-40 h-40 sm:w-52 sm:h-52 rounded-full cyber-border p-1">
+       <div class="w-full h-full rounded-full bg-gradient-to-br from-[#12121a] to-[#0a0a0f] flex items-center justify-center overflow-hidden"><!-- Avatar SVG -->
+        <svg viewbox="0 0 200 200" class="w-full h-full"><defs>
+          <lineargradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+           <stop offset="0%" style="stop-color:#00ff88" />
+           <stop offset="100%" style="stop-color:#0088ff" />
+          </lineargradient>
+         </defs> <circle cx="100" cy="70" r="35" fill="url(#avatarGrad)" /> <ellipse cx="100" cy="150" rx="55" ry="40" fill="url(#avatarGrad)" /> <circle cx="100" cy="70" r="30" fill="#12121a" /> <circle cx="90" cy="65" r="3" fill="#00ff88" /> <circle cx="110" cy="65" r="3" fill="#00ff88" /> <path d="M 92 78 Q 100 85 108 78" stroke="#00ff88" stroke-width="2" fill="none" /> <rect x="70" y="45" width="60" height="8" rx="2" fill="#0088ff" /> <rect x="75" y="45" width="8" height="8" fill="#00ff88" />
+        </svg>
+       </div>
+      </div><!-- Status Badge -->
+      <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-[#12121a] px-4 py-1 rounded-full border border-[#00ff88] text-xs font-mono text-[#00ff88]"><span class="inline-block w-2 h-2 rounded-full bg-[#00ff88] animate-pulse mr-2"></span> Available
+      </div>
+     </div><!-- Name & Title -->
+     <h1 id="fullName" class="font-cyber text-3xl sm:text-5xl lg:text-6xl font-bold mb-4 glitch-text" data-text="Naufal Ya'is Nabil">Naufal Ya'is Nabil</h1>
+     <div class="flex flex-wrap items-center justify-center gap-2 mb-6"><span id="roleTitle" class="px-4 py-2 rounded-full bg-gradient-to-r from-[#00ff88]/20 to-[#0088ff]/20 border border-[#00ff88]/30 font-mono text-sm sm:text-base"> 🎓 Pelajar | 🛡️ Cyber Security Enthusiast </span>
+     </div>
+     <p id="introText" class="font-tech text-lg sm:text-xl text-[#e0e0e0]/80 mb-2 max-w-2xl mx-auto leading-relaxed">Selamat datang di portofolio digital saya. Menjelajahi dunia <span class="text-[#00ff88]">keamanan siber</span> dan <span class="text-[#0088ff]">teknologi</span> satu langkah pada satu waktu.</p>
+     <p class="font-mono text-sm sm:text-base text-[#00ff88]/80 mb-8 max-w-2xl mx-auto italic">"Sometimes i dream of saving the world. Saving everyone from invisible hand."</p><!-- CTA Buttons -->
+     <div class="flex flex-wrap items-center justify-center gap-4"><a href="#portfolio" class="group px-8 py-3 rounded-lg bg-gradient-to-r from-[#00ff88] to-[#0088ff] font-cyber font-semibold text-[#0a0a0f] hover:shadow-lg hover:shadow-[#00ff88]/30 transition-all transform hover:scale-105"> <span class="flex items-center gap-2"> Lihat Portofolio 
+        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg></span> </a> <a href="#contact" class="px-8 py-3 rounded-lg border-2 border-[#00ff88] font-cyber font-semibold text-[#00ff88] hover:bg-[#00ff88]/10 transition-all transform hover:scale-105"> Hubungi Saya </a>
+     </div><!-- Scroll Indicator -->
+     <div class="mt-16 animate-bounce">
+      <svg class="w-6 h-6 mx-auto text-[#00ff88]/50" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+     </div>
+    </div>
+   </section><!-- About Section -->
+   <section id="about" class="py-20 px-4 bg-[#12121a]/50">
+    <div class="max-w-6xl mx-auto">
+     <h2 id="aboutTitle" class="section-title font-cyber text-2xl sm:text-3xl font-bold text-center mb-12 text-[#00ff88]">Tentang Saya</h2>
+     <div class="grid md:grid-cols-2 gap-8 lg:gap-12"><!-- Bio Card -->
+      <div class="cyber-border rounded-2xl p-6 sm:p-8 scan-line">
+       <h3 class="font-cyber text-xl text-[#00ff88] mb-4 flex items-center gap-2"><span>👋</span> Halo!</h3>
+       <img src="https://drive.google.com/uc?export=view&id=1q3eNc2epKH_SvLfFNMPUDQHfc2GNpa8x" alt="Foto Profil" class="w-full rounded-xl mb-4"/>
+       <p class="font-tech text-[#e0e0e0]/90 leading-relaxed mb-6">Saya, seorang siswa di <span class="text-[#00ff88] font-semibold">SMAN 1 Subang</span> yang sangat antusias dengan olahraga lari! Saya aktif dalam Ekstrakurikuler <span class="text-[#0088ff] font-semibold">Pramuka</span>. Salah satu pencapaian yang paling berkesan bagi saya adalah berani mengikuti kegiatan donor darah di sekolah.</p>
+       <h4 class="font-cyber text-lg text-[#0088ff] mb-3 flex items-center gap-2"><span>🎯</span> Minat &amp; Tujuan</h4>
+       <p class="font-tech text-[#e0e0e0]/90 leading-relaxed">Saya berminat untuk melanjutkan studi saya di <span class="text-[#00ff88] font-semibold">Institut Teknologi Sepuluh Nopember (ITS)</span>, mendalami bidang teknologi dan keamanan siber.</p>
+      </div><!-- Education Timeline -->
+      <div class="cyber-border rounded-2xl p-6 sm:p-8">
+       <h3 class="font-cyber text-xl text-[#00ff88] mb-6 flex items-center gap-2"><span>📚</span> Riwayat Pendidikan</h3>
+       <div class="space-y-6">
+        <div class="timeline-item">
+         <div class="font-cyber text-[#00ff88]">
+          SMAN 1 Subang
+         </div>
+         <div class="font-mono text-xs text-[#0088ff]">
+          2024 - Sekarang
+         </div>
+         <p class="font-tech text-sm text-[#e0e0e0]/70 mt-1">Jurusan IPA</p>
+        </div>
+        <div class="timeline-item">
+         <div class="font-cyber text-[#00ff88]">
+          SMPN 1 Subang
+         </div>
+         <div class="font-mono text-xs text-[#0088ff]">
+          2021 - 2024
+         </div>
+        </div>
+        <div class="timeline-item">
+         <div class="font-cyber text-[#00ff88]">
+          SDN Rosela Indah Subang
+         </div>
+         <div class="font-mono text-xs text-[#0088ff]">
+          2015 - 2021
+         </div>
+        </div>
+        <div class="timeline-item">
+         <div class="font-cyber text-[#00ff88]">
+          TK Uawatun Hasanah
+         </div>
+         <div class="font-mono text-xs text-[#0088ff]">
+          2013 - 2015
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- Values -->
+     <div class="mt-12 grid sm:grid-cols-2 gap-6">
+      <div class="cyber-border rounded-xl p-6 card-hover">
+       <div class="flex items-center gap-4 mb-3">
+        <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#00ff88]/20 to-[#00ff88]/5 flex items-center justify-center"><span class="text-2xl">🛡️</span>
+        </div>
+        <h4 class="font-cyber text-lg text-[#00ff88]">Cyber Security</h4>
+       </div>
+       <p class="font-tech text-[#e0e0e0]/70 text-sm">Memahami dan menganalisis kerentanan sistem untuk meningkatkan keamanan digital.</p>
+      </div>
+      <div class="cyber-border rounded-xl p-6 card-hover">
+       <div class="flex items-center gap-4 mb-3">
+        <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#0088ff]/20 to-[#0088ff]/5 flex items-center justify-center"><span class="text-2xl">🔍</span>
+        </div>
+        <h4 class="font-cyber text-lg text-[#0088ff]">OSINT</h4>
+       </div>
+       <p class="font-tech text-[#e0e0e0]/70 text-sm">Open Source Intelligence - mengumpulkan dan menganalisis informasi dari sumber terbuka.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Skills Section -->
+   <section id="skills" class="py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+     <h2 class="section-title font-cyber text-2xl sm:text-3xl font-bold text-center mb-12 text-[#00ff88]">Keahlian</h2>
+     <div class="grid md:grid-cols-2 gap-8"><!-- Hard Skills -->
+      <div class="cyber-border rounded-2xl p-6 sm:p-8">
+       <h3 class="font-cyber text-xl text-[#00ff88] mb-6 flex items-center gap-2"><span>⚙️</span> Hard Skills</h3>
+       <div class="space-y-6">
+        <div>
+         <div class="flex justify-between items-center mb-2"><span class="font-tech font-medium">Web Penetration Testing</span> <span class="font-mono text-xs text-[#00ff88]">75%</span>
+         </div>
+         <div class="progress-bar" style="--progress: 75%"></div>
+        </div>
+        <div>
+         <div class="flex justify-between items-center mb-2"><span class="font-tech font-medium">OSINT Research</span> <span class="font-mono text-xs text-[#00ff88]">70%</span>
+         </div>
+         <div class="progress-bar" style="--progress: 70%"></div>
+        </div>
+        <div>
+         <div class="flex justify-between items-center mb-2"><span class="font-tech font-medium">Network Analysis</span> <span class="font-mono text-xs text-[#00ff88]">60%</span>
+         </div>
+         <div class="progress-bar" style="--progress: 60%"></div>
+        </div>
+        <div>
+         <div class="flex justify-between items-center mb-2"><span class="font-tech font-medium">Linux Administration</span> <span class="font-mono text-xs text-[#00ff88]">65%</span>
+         </div>
+         <div class="progress-bar" style="--progress: 65%"></div>
+        </div>
+       </div>
+      </div><!-- Soft Skills -->
+      <div class="cyber-border rounded-2xl p-6 sm:p-8">
+       <h3 class="font-cyber text-xl text-[#0088ff] mb-6 flex items-center gap-2"><span>🧠</span> Soft Skills</h3>
+       <div class="grid grid-cols-2 gap-4">
+        <div class="skill-icon p-4 rounded-xl bg-[#12121a] border border-[#00ff88]/20 text-center">
+         <div class="text-3xl mb-2">
+          💬
+         </div><span class="font-tech text-sm">Komunikasi Efektif</span>
+        </div>
+        <div class="skill-icon p-4 rounded-xl bg-[#12121a] border border-[#0088ff]/20 text-center">
+         <div class="text-3xl mb-2">
+          👑
+         </div><span class="font-tech text-sm">Leadership</span>
+        </div>
+        <div class="skill-icon p-4 rounded-xl bg-[#12121a] border border-[#00ff88]/20 text-center">
+         <div class="text-3xl mb-2">
+          🧩
+         </div><span class="font-tech text-sm">Problem Solving</span>
+        </div>
+        <div class="skill-icon p-4 rounded-xl bg-[#12121a] border border-[#0088ff]/20 text-center">
+         <div class="text-3xl mb-2">
+          🤝
+         </div><span class="font-tech text-sm">Teamwork</span>
+        </div>
+        <div class="skill-icon p-4 rounded-xl bg-[#12121a] border border-[#00ff88]/20 text-center">
+         <div class="text-3xl mb-2">
+          ���
+         </div><span class="font-tech text-sm">Time Management</span>
+        </div>
+        <div class="skill-icon p-4 rounded-xl bg-[#12121a] border border-[#0088ff]/20 text-center">
+         <div class="text-3xl mb-2">
+          🎨
+         </div><span class="font-tech text-sm">Creativity</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Portfolio Section -->
+   <section id="portfolio" class="py-20 px-4 bg-[#12121a]/50">
+    <div class="max-w-6xl mx-auto">
+     <h2 class="section-title font-cyber text-2xl sm:text-3xl font-bold text-center mb-12 text-[#00ff88]">Portofolio</h2>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Project Card 1 -->
+      <div class="cyber-border rounded-2xl overflow-hidden card-hover">
+       <div class="h-48 bg-gradient-to-br from-[#00ff88]/20 to-[#0088ff]/20 flex items-center justify-center">
+        <svg class="w-24 h-24 text-[#00ff88]" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+       </div>
+       <div class="p-6">
+        <h3 class="font-cyber text-lg text-[#00ff88] mb-2">Web Security Audit</h3>
+        <p class="font-tech text-sm text-[#e0e0e0]/70 mb-4">Proyek analisis keamanan website untuk mengidentifikasi kerentanan dan memberikan rekomendasi perbaikan.</p>
+        <div class="flex flex-wrap gap-2"><span class="px-2 py-1 text-xs font-mono bg-[#00ff88]/10 text-[#00ff88] rounded">Pentest</span> <span class="px-2 py-1 text-xs font-mono bg-[#0088ff]/10 text-[#0088ff] rounded">Security</span>
+        </div>
+       </div>
+      </div><!-- Project Card 2 -->
+      <div class="cyber-border rounded-2xl overflow-hidden card-hover">
+       <div class="h-48 bg-gradient-to-br from-[#0088ff]/20 to-[#00ff88]/20 flex items-center justify-center">
+        <svg class="w-24 h-24 text-[#0088ff]" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+       </div>
+       <div class="p-6">
+        <h3 class="font-cyber text-lg text-[#0088ff] mb-2">OSINT Investigation</h3>
+        <p class="font-tech text-sm text-[#e0e0e0]/70 mb-4">Penelusuran informasi menggunakan teknik Open Source Intelligence untuk berbagai keperluan investigasi.</p>
+        <div class="flex flex-wrap gap-2"><span class="px-2 py-1 text-xs font-mono bg-[#0088ff]/10 text-[#0088ff] rounded">OSINT</span> <span class="px-2 py-1 text-xs font-mono bg-[#00ff88]/10 text-[#00ff88] rounded">Research</span>
+        </div>
+       </div>
+      </div><!-- Project Card 3 -->
+      <div class="cyber-border rounded-2xl overflow-hidden card-hover">
+       <div class="h-48 bg-gradient-to-br from-[#00ff88]/20 to-[#0088ff]/20 flex items-center justify-center">
+        <svg class="w-24 h-24 text-[#00ff88]" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+       </div>
+       <div class="p-6">
+        <h3 class="font-cyber text-lg text-[#00ff88] mb-2">Digital Literacy Campaign</h3>
+        <p class="font-tech text-sm text-[#e0e0e0]/70 mb-4">Partisipasi dalam kegiatan pendampingan literasi digital bersama Kominfo RI.</p>
+        <div class="flex flex-wrap gap-2"><span class="px-2 py-1 text-xs font-mono bg-[#00ff88]/10 text-[#00ff88] rounded">Education</span> <span class="px-2 py-1 text-xs font-mono bg-[#0088ff]/10 text-[#0088ff] rounded">Community</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Organization & Certification Section -->
+   <section id="organization" class="py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+     <h2 class="section-title font-cyber text-2xl sm:text-3xl font-bold text-center mb-12 text-[#00ff88]">Organisasi &amp; Sertifikasi</h2>
+     <div class="grid md:grid-cols-2 gap-8"><!-- Organization -->
+      <div class="cyber-border rounded-2xl p-6 sm:p-8 card-hover">
+       <div class="flex items-start gap-4">
+        <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-[#00ff88] to-[#0088ff] flex items-center justify-center flex-shrink-0"><span class="text-3xl">⚜️</span>
+        </div>
+        <div>
+         <h3 class="font-cyber text-xl text-[#00ff88] mb-2">Pramuka</h3>
+         <p class="font-tech font-semibold text-[#0088ff] mb-2">Dewan Ambalan Ganeca Padmanaba</p>
+         <p class="font-tech text-sm text-[#e0e0e0]/70">Aktif berpartisipasi dalam kegiatan kepramukaan, mengembangkan jiwa kepemimpinan dan kemandirian.</p>
+        </div>
+       </div>
+      </div><!-- Certification -->
+      <div class="cyber-border rounded-2xl p-6 sm:p-8 card-hover">
+       <div class="flex items-start gap-4">
+        <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-[#0088ff] to-[#00ff88] flex items-center justify-center flex-shrink-0"><span class="text-3xl">📜</span>
+        </div>
+        <div>
+         <h3 class="font-cyber text-xl text-[#0088ff] mb-2">Sertifikat Pandu Digital</h3>
+         <p class="font-tech font-semibold text-[#00ff88] mb-2">Kominfo RI</p>
+         <p class="font-tech text-sm text-[#e0e0e0]/70">Sertifikat dalam kegiatan pendampingan pandu digital pada kegiatan literasi digital Kementerian Komunikasi dan Informatika RI.</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Contact Section -->
+   <section id="contact" class="py-20 px-4 bg-[#12121a]/50">
+    <div class="max-w-4xl mx-auto">
+     <h2 id="contactTitle" class="section-title font-cyber text-2xl sm:text-3xl font-bold text-center mb-4 text-[#00ff88]">Hubungi Saya</h2>
+     <p class="font-tech text-center text-[#e0e0e0]/70 mb-12">Tertarik untuk berkolaborasi atau sekadar menyapa? Jangan ragu untuk menghubungi!</p>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Email --> <a href="mailto:nsukalari@gmail.com" class="contact-card cyber-border rounded-xl p-6 text-center block">
+       <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-gradient-to-br from-[#00ff88]/20 to-[#0088ff]/20 flex items-center justify-center">
+        <svg class="w-7 h-7 text-[#00ff88]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+       </div><h3 class="font-cyber text-[#00ff88] mb-1">Email</h3><p class="font-mono text-sm text-[#e0e0e0]/70">nsukalari@gmail.com</p></a> <!-- Phone --> <a href="tel:081321113530" class="contact-card cyber-border rounded-xl p-6 text-center block">
+       <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-gradient-to-br from-[#0088ff]/20 to-[#00ff88]/20 flex items-center justify-center">
+        <svg class="w-7 h-7 text-[#0088ff]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        </svg>
+       </div><h3 class="font-cyber text-[#0088ff] mb-1">Telepon</h3><p class="font-mono text-sm text-[#e0e0e0]/70">081321113530</p></a> <!-- Instagram --> <a href="https://instagram.com/ranwithrain" target="_blank" rel="noopener noreferrer" class="contact-card cyber-border rounded-xl p-6 text-center block sm:col-span-2 lg:col-span-1">
+       <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-gradient-to-br from-[#00ff88]/20 to-[#0088ff]/20 flex items-center justify-center">
+        <svg class="w-7 h-7 text-[#00ff88]" viewbox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+        </svg>
+       </div><h3 class="font-cyber text-[#00ff88] mb-1">Instagram</h3><p class="font-mono text-sm text-[#e0e0e0]/70">@ranwithrain</p></a>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="py-8 px-4 border-t border-[#00ff88]/20">
+    <div class="max-w-6xl mx-auto">
+     <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+       <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#00ff88] to-[#0088ff] flex items-center justify-center"><span class="font-cyber font-bold text-[#0a0a0f] text-sm">N</span>
+       </div><span class="font-cyber text-[#00ff88]">NRAA-XCIETY</span>
+      </div>
+      <p class="font-mono text-sm text-[#e0e0e0]/50 text-center">© NaufalYN - 2026 | All Rights Reserved</p>
+      <div class="flex items-center gap-4"><span class="font-tech text-xs text-[#0088ff]">Made with 💚 and ☕</span>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      brand_name: 'NRAA-XCIETY',
+      tagline: 'Cyber Security Enthusiast',
+      full_name: "Naufal Ya'is Nabil",
+      role_title: '🎓 Pelajar | 🛡️ Cyber Security Enthusiast',
+      intro_text: 'Selamat datang di portofolio digital saya. Menjelajahi dunia keamanan siber dan teknologi satu langkah pada satu waktu.',
+      about_title: 'Tentang Saya',
+      contact_title: 'Hubungi Saya',
+      background_color: '#0a0a0f',
+      surface_color: '#12121a',
+      text_color: '#e0e0e0',
+      primary_accent: '#00ff88',
+      secondary_accent: '#0088ff',
+      font_family: 'Rajdhani',
+      font_size: 16
+    };
+    
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+    });
+    
+    // Close mobile menu when clicking a link
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+      });
+    });
+    
+    // Smooth scroll for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+    
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+    
+    // Matrix rain effect
+    const canvas = document.getElementById('matrixCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    const chars = 'NRAA-XCIETY01アイウエオカキクケコサシスセソ';
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
+    
+    function drawMatrix() {
+      ctx.fillStyle = 'rgba(10, 10, 15, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      ctx.fillStyle = '#00ff88';
+      ctx.font = `${fontSize}px monospace`;
+      
+      for (let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+    
+    setInterval(drawMatrix, 50);
+    
+    // Animate progress bars on scroll
+    const progressBars = document.querySelectorAll('.progress-bar');
+    const observerOptions = {
+      threshold: 0.5
+    };
+    
+    const progressObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.setProperty('--progress', entry.target.style.getPropertyValue('--progress'));
+        }
+      });
+    }, observerOptions);
+    
+    progressBars.forEach(bar => progressObserver.observe(bar));
+    
+    // Element SDK initialization
+    async function onConfigChange(config) {
+      const brandName = document.getElementById('brandName');
+      const tagline = document.getElementById('tagline');
+      const fullName = document.getElementById('fullName');
+      const roleTitle = document.getElementById('roleTitle');
+      const introText = document.getElementById('introText');
+      const aboutTitle = document.getElementById('aboutTitle');
+      const contactTitle = document.getElementById('contactTitle');
+      
+      if (brandName) brandName.textContent = config.brand_name || defaultConfig.brand_name;
+      if (tagline) tagline.textContent = config.tagline || defaultConfig.tagline;
+      if (fullName) {
+        fullName.textContent = config.full_name || defaultConfig.full_name;
+        fullName.setAttribute('data-text', config.full_name || defaultConfig.full_name);
+      }
+      if (roleTitle) roleTitle.textContent = config.role_title || defaultConfig.role_title;
+      if (introText) introText.innerHTML = (config.intro_text || defaultConfig.intro_text).replace(
+        'keamanan siber', '<span class="text-[#00ff88]">keamanan siber</span>'
+      ).replace('teknologi', '<span class="text-[#0088ff]">teknologi</span>');
+      if (aboutTitle) aboutTitle.textContent = config.about_title || defaultConfig.about_title;
+      if (contactTitle) contactTitle.textContent = config.contact_title || defaultConfig.contact_title;
+      
+      // Apply colors
+      const bgColor = config.background_color || defaultConfig.background_color;
+      const surfaceColor = config.surface_color || defaultConfig.surface_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const primaryAccent = config.primary_accent || defaultConfig.primary_accent;
+      const secondaryAccent = config.secondary_accent || defaultConfig.secondary_accent;
+      
+      document.documentElement.style.setProperty('--bg-primary', bgColor);
+      document.documentElement.style.setProperty('--surface-color', surfaceColor);
+      document.documentElement.style.setProperty('--text-color', textColor);
+      document.documentElement.style.setProperty('--accent-primary', primaryAccent);
+      document.documentElement.style.setProperty('--accent-secondary', secondaryAccent);
+      
+      document.body.style.backgroundColor = bgColor;
+      document.body.style.color = textColor;
+      
+      // Apply font
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      const baseFontStack = 'sans-serif';
+      document.body.style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+      
+      // Apply font size
+      const fontSize = config.font_size || defaultConfig.font_size;
+      document.body.style.fontSize = `${fontSize}px`;
+    }
+    
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => config.surface_color || defaultConfig.surface_color,
+            set: (value) => {
+              config.surface_color = value;
+              window.elementSdk.setConfig({ surface_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.primary_accent || defaultConfig.primary_accent,
+            set: (value) => {
+              config.primary_accent = value;
+              window.elementSdk.setConfig({ primary_accent: value });
+            }
+          },
+          {
+            get: () => config.secondary_accent || defaultConfig.secondary_accent,
+            set: (value) => {
+              config.secondary_accent = value;
+              window.elementSdk.setConfig({ secondary_accent: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+    
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['brand_name', config.brand_name || defaultConfig.brand_name],
+        ['tagline', config.tagline || defaultConfig.tagline],
+        ['full_name', config.full_name || defaultConfig.full_name],
+        ['role_title', config.role_title || defaultConfig.role_title],
+        ['intro_text', config.intro_text || defaultConfig.intro_text],
+        ['about_title', config.about_title || defaultConfig.about_title],
+        ['contact_title', config.contact_title || defaultConfig.contact_title]
+      ]);
+    }
+    
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    } else {
+      onConfigChange(defaultConfig);
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c90732cb4fc4ac9',t:'MTc3MDI3Mzk3OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
